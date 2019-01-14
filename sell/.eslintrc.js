@@ -29,6 +29,6 @@ module.exports = {
     'indent': 0,
     'space-before-function-paren': 0,
     'no-tabs': 'off',
-    'no-mixed-spaces-and-tabs': 'off'
+    'no-mixed-spaces-and-tabs': 'off',
   }
 }
