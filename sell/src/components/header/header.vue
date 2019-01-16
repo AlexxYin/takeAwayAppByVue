@@ -60,7 +60,7 @@
     		<i class="iconfont icon-cha"></i>
     	</div>
     </div>
-</transition>    
+</transition>
 </div>
 </template>
 <script type="text/ecmascript-6">
