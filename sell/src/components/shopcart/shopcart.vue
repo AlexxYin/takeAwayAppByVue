@@ -17,6 +17,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="ball-container">
+			<div v-for="(ball,index) in balls" :key="index">
+				<transition name='drop'>
+					<div v-show="ball.show" class='ball'>
+						<div class="inner"></div>
+			        </div>
+				</transition>
+			</div>
+		</div>
 	</div>
 </template>
 <script type="text/ecmascript-6">
@@ -39,6 +48,27 @@ export default {
 			type: Number,
 			default: 0
 		}
+	},
+	data() {
+		return {
+			balls: [
+			{
+				show: false
+			},
+			{
+				show: false
+			},
+			{
+				show: false
+			},
+			{
+				show: false
+			},
+			{
+				show: false
+			}
+			]
+		};
 	},
 	computed: {
 		totalPrice() {
@@ -71,6 +101,11 @@ export default {
 			} else {
 				return 'enough';
 			}
+		}
+	},
+	methods: {
+		drop(el) {
+			console.log(el);
 		}
 	}
 };
@@ -167,4 +202,10 @@ export default {
 	        &.enough
 	          background:#00b43c
 	          color:#fff
+	  .ball-container
+	    .ball
+	      position:fixed
+	      left:32px
+	      bottom:22px
+	      z-index:200
 </style>

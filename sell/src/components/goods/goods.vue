@@ -29,7 +29,7 @@
     							<span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
     						</div>
     						<div class="cartcontrol-wrapper">
-    							<cartcontrol :food="food"></cartcontrol>
+    							<cartcontrol :food="food" @increment="incrementTotal"></cartcontrol>
     						</div>
     					</div>
     				</li>
@@ -37,7 +37,7 @@
     		</li>
     	</ul>
     </div>
-    <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice" ref="shopcart"></shopcart>
 </div>
 </template>
 <script type="text/ecmascript-6">
@@ -107,6 +107,10 @@ export default {
 			this.foodsScroll.scrollToElement(el, 300);
 			console.log(index);
 		},
+		incrementTotal(target) {
+            // 访问子组件的变量
+            this.$refs.shopcart.drop(target); // shopcart 元素的drop事件，见shopcart
+        },
 		_initScroll() {
 			this.menuScroll = new BScroll(this.$refs.menuWrapper, {
 				click: true
@@ -134,6 +138,11 @@ export default {
 	components: {
 		shopcart,
 		cartcontrol
+	},
+	events: {
+		'cart.add'(target) {
+			this._drop(target);
+		}
 	}
 };
 </script>

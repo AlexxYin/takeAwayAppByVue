@@ -37,6 +37,7 @@ import Vue from 'vue';
     			} else {
     				this.food.count++;
     			}
+    			this.$emit('increment', event.target);// 将增加的事件传递给父组件goods
     		}
     	}
     };
