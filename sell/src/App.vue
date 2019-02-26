@@ -8,17 +8,26 @@
       <div class="tab-item"><router-link to='/ratings'>评论</router-link></div>
       <div class="tab-item"><router-link to='/seller'>商家</router-link></div>
     </div>
-    <router-view :seller="seller"></router-view>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import header from './components/header/header.vue';
+import {urlParse} from 'common/js/util';
+import data from 'common/json/data.json';
 const ERR_OK = 0;
 export default {
   data() {
     return {
-      seller: {}
+      seller: {
+        id: (() => {
+          let queryParam = urlParse();
+          console.log(queryParam);
+          return queryParam.id;
+      }) ()
     };
   },
   created() {
@@ -27,9 +36,11 @@ export default {
       response = response.body;
       if (response.errno === ERR_OK) {
         this.seller = response.data;
+        this.seller = Object.assign({},this.seller,res.data); // 合并目标对象
         console.log(this.seller);
       }
     });
+    this.seller = data.seller;
   },
   components: {
     'v-header': header

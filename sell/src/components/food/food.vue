@@ -66,7 +66,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import cartcontrol from '../cartControl/cartControl';
+import cartcontrol from '../cartcontrol/cartcontrol';
 import BScroll from 'better-scroll';
 import split from '../split/split';
 import Vue from 'vue';

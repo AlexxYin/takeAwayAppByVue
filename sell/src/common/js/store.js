@@ -1,6 +1,3 @@
-/**
- * Created by yi on 2016-12-28.
- */
 
 export function savaToLocal(id, key, value) {
   let seller = window.localStorage.__seller__;

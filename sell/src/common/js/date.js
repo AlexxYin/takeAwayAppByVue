@@ -1,6 +1,4 @@
-/**
- * Created by yi on 2016-12-27.
- */
+
 
 export function formatDate(date, fmt) {
    if (/(y+)/.test(fmt)) {
